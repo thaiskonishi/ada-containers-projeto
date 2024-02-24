@@ -1,0 +1,27 @@
+version: '3.5'
+services:
+    backend:
+        image: thaismk/project-ada-api:1.0.0
+        ports:
+            - "80:80"
+        networks:
+            - company-bridge
+        volumes:
+            - db_data:/var/lib/backend/data
+
+    mysql:
+        image: thaismk/project-ada-mysql:1.0.0
+        volumes:
+            - db_data:/var/lib/db
+        ports:
+            - "3306:3306"
+        networks:
+            - company-bridge
+        environment:
+            MYSQL_ROOT_PASSWORD: RootPassword
+            MYSQL_DATABASE: Company
+networks:
+    company-bridge:
+        driver: bridge
+volumes: 
+    db_data:
