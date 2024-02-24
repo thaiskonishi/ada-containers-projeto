@@ -8,7 +8,8 @@ services:
             - company-bridge
         volumes:
             - db_data:/var/lib/backend/data
-
+        depends_on:
+            - mysql
     mysql:
         image: thaismk/project-ada-mysql:1.0.0
         volumes:
